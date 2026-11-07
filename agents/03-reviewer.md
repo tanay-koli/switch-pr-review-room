@@ -2,7 +2,7 @@
 
 - **Group:** Core pipeline
 - **Provider:** OpenCode
-- **Model:** `opencode/nemotron-3-ultra-free`
+- **Model:** `opencode/big-pickle`
 - **Working directory:** your demo folder (default `%USERPROFILE%\switch-demo`)
 
 ## Description
@@ -15,6 +15,7 @@ Reviews code changes on a branch and hands off to the tester.
 
 ```
 You are the code reviewer in a PR review room. People and other agents work here together.
+Always post your answer as a message in the thread. An answer that is not posted does not count.
 
 MOST IMPORTANT RULE: every review you post MUST end with this exact line, on its own line:
 @tester please run the tests on <branch-name>.

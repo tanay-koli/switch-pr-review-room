@@ -1,8 +1,14 @@
 # Solo Dev, Full Team: a PR review room for Switch
 
-> Built for the **Flip the Switch Hackathon** (WeMakeDevs × DevTools Academy × Switch) — Track 1: Best Business Workflow.
+**Demo video:** TODO: add video link
 
-**Demo video:** _add link here_
+## Hackathon
+
+- **Event:** Flip the Switch Hackathon (WeMakeDevs × DevTools Academy × Switch)
+- **Track:** Track 1: Best Business Workflow
+- **Why it fits:** it's a practical code review and release workflow where people and agents plan, review, test and ship code together, with a human approving every step that matters.
+
+Feedback on Switch from building this: [FEEDBACK.md](FEEDBACK.md).
 
 ## The problem
 
@@ -37,15 +43,15 @@ flowchart LR
 |---|---|---|---|
 | [planner](agents/01-planner.md) | Core pipeline | Turns a human's request into a short plan and starts the build after human approval. | `opencode/big-pickle` |
 | [builder](agents/02-builder.md) | Core pipeline | Writes code from an approved plan on a new branch, and fixes it when tests fail. | `opencode/deepseek-v4.1-flash-free` |
-| [reviewer](agents/03-reviewer.md) | Core pipeline | Reviews code changes on a branch and hands off to the tester. | `opencode/nemotron-3-ultra-free` |
+| [reviewer](agents/03-reviewer.md) | Core pipeline | Reviews code changes on a branch and hands off to the tester. | `opencode/big-pickle` |
 | [tester](agents/04-tester.md) | Core pipeline | Runs the test suite on a branch and reports exact results. | `opencode/glm-5.3-flash-free` |
 | [release](agents/05-release.md) | Core pipeline | Drafts the changelog and merges a branch only after human approval. | `opencode/mimo-v2.6-flash-free` |
-| [summary](agents/06-summary.md) | On-demand helper | Recaps what the room shipped, what's open, and what's waiting on a human. | `opencode/nemotron-3.5-lightning-free` |
+| [summary](agents/06-summary.md) | On-demand helper | Recaps what the room shipped, what's open, and what's waiting on a human. | `opencode/big-pickle` |
 | [security](agents/07-security.md) | On-demand helper | Checks a branch for secrets and risky code before it ships. | `opencode/flint-40b-free` |
 | [docs](agents/08-docs.md) | On-demand helper | Updates the README on a feature branch to match what the code now does. | `opencode/beam-free` |
 | [test-writer](agents/09-test-writer.md) | On-demand helper | Adds missing tests to a branch when asked. | `opencode/crouton-alpha-free` |
 
-Each agent gets a **different** free model so they don't share one rate limit. Free models on OpenCode are limited-time; if one disappears, swap in another from `opencode models`.
+Most agents get a **different** free model so they don't share one rate limit (planner, reviewer and summary share `opencode/big-pickle`). Free models on OpenCode are limited-time; if one disappears, swap in another from `opencode models`.
 
 ### Guardrails
 
@@ -96,7 +102,7 @@ opencode run -m opencode/glm-5.3-flash-free "say hi"
 From this repo's folder:
 
 ```
-setup-demo.cmd
+.\setup-demo.cmd
 ```
 
 This creates `%USERPROFILE%\switch-demo` with a tiny cart library, 6 passing tests and two demo branches. (Pass a different folder as an argument if you like.)
@@ -116,7 +122,7 @@ Use the prompts in **A run, start to finish** above.
 ### Reset between runs
 
 ```
-reset-demo.cmd
+.\reset-demo.cmd
 ```
 
 Puts the demo repo back to its starting state (deletes merges and agent-made branches, recreates the two demo branches).
@@ -127,6 +133,12 @@ Puts the demo repo back to its starting state (deletes merges and agent-made bra
 - Splitting agents into a **core pipeline** and **on-demand helpers** kept the system reliable as it grew from 3 to 9 agents.
 - A shared working folder means only one agent may edit files at a time.
 
+## Known limitations
+
+- Free models are limited-time, and they sometimes skip posting a reply or a hand-off.
+- All agents must share one working directory.
+- Windows is the only OS I tested.
+
 ## Repo layout
 
 ```
@@ -136,4 +148,6 @@ demo-template/   source files setup-demo.cmd uses to build the demo repo
 setup-demo.cmd   builds the demo repo with history and tags
 reset-demo.cmd   resets the demo repo between runs
 windows-notes.md Windows setup problems and fixes
+FEEDBACK.md      what I like about Switch and what I'd improve
+LICENSE          MIT
 ```

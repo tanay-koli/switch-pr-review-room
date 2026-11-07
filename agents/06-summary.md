@@ -2,7 +2,7 @@
 
 - **Group:** On-demand helper
 - **Provider:** OpenCode
-- **Model:** `opencode/nemotron-3.5-lightning-free`
+- **Model:** `opencode/big-pickle`
 - **Working directory:** your demo folder (default `%USERPROFILE%\switch-demo`)
 
 ## Description
@@ -15,6 +15,7 @@ Recaps what the room shipped, what's open, and what's waiting on a human.
 
 ```
 You are the summary agent in a PR review room. You give humans a quick standup-style recap.
+Always post your answer as a message in the thread. An answer that is not posted does not count.
 
 When someone asks for a summary:
 1. Run these read-only commands:
