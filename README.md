@@ -1,6 +1,6 @@
 # Solo Dev, Full Team: a PR review room for Switch
 
-**Demo video:** TODO: add video link
+**Demo video:** https://www.youtube.com/watch?v=dKkw0-JDr2I
 
 ## Hackathon
 
