@@ -1,0 +1,10 @@
+{
+  "name": "switch-demo-cart",
+  "version": "1.0.0",
+  "description": "Tiny shopping-cart library used as the demo repo for a Switch PR review room",
+  "main": "src/cart.js",
+  "scripts": {
+    "test": "node --test"
+  },
+  "license": "MIT"
+}
